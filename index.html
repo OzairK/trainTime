@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Train Times</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>  <!-- moment.js link added -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron pl-3 jumbotron-fluid">
+            <h1 class="display-4 text-center">Train Time</h1>
+        </div>
+
+
+        <div class="card mt-2">
+            <div class="card-header">
+                Train Times
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Train Name</th>
+                            <th scope="col">Destinatation</th>
+                            <th scope="col">Frequency (min)</th>
+                            <th scope="col">Next Arrival</th>
+                            <th scope="col">Minutes Away</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                Add Train Time:
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="train-Name">Train Name</label>
+                        <input type="text" class="form-control" id="train-Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="train-Destination">Train Role</label>
+                        <input type="text" class="form-control" id="train-Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="first-Train-Time">First Train Time (HH:mm) millitary time</label>
+                        <input type="text" class="form-control" id="first-Train-Time">
+                    </div>
+                    <div class="form-group">
+                        <label for="train-Frequenyc">Frequency (min)</label>
+                        <input type="text" class="form-control" id="train-Frequency">
+                    </div>
+                    <button type="submit" id="add-Train" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>  <!-- jquery link added -->
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>         <!--firebase link-->
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD2u9LlLLdukoPOBXhURR7NcPGlSBCn9VE",
+            authDomain: "traintime-90c0e.firebaseapp.com",
+            databaseURL: "https://traintime-90c0e.firebaseio.com",
+            projectId: "traintime-90c0e",
+            storageBucket: "traintime-90c0e.appspot.com",
+            messagingSenderId: "343146431486"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <script type=text/javaScript src="assets/app.js"> </script>             <!-- link to app.js -->
+
+</body>
+
+</html>
