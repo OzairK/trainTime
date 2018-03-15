@@ -9,8 +9,7 @@ $("#add-Train").on("click", function (e) {                                      
     var firstTrainTime = $("#first-Train-Time").val().trim();
     var trainFrequency = $("#train-Frequency").val().trim();
     var properFormat = moment(firstTrainTime, 'HH:mm').isValid();                               // has proper format been used?
-    console.log(properFormat);
-
+  
     if (trainName != "" && trainDestination != "" && firstTrainTime != "" && trainFrequency != "" && properFormat) { //all fields must be entered before submission
         db.ref().push({                                                                         // this creates new object rather then writting over like set does
             trainName: trainName,
