@@ -54,7 +54,7 @@ db.ref().orderByChild("trainDestination").on("child_added", function (snapshot) 
     }
 
     else {                                                                                  // first train has not started, next train will be first train
-        nextTrainTime = moment(convertedTime).format("HH:mm");                              // converting to display fromat
+        nextTrainTime = moment(convertedTime).format("HH:mm");                              
         difference = Math.abs(difference);
     }
 
