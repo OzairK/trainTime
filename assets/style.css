@@ -5,3 +5,7 @@
 .card-header {
     background-color: lightyellow;
 }
+
+.roundedInput{
+    border-radius: 20px;
+}

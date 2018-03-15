@@ -1,21 +1,32 @@
 var db = firebase.database();
 
 
-$("#add-Train").on("click", function (e) {                                                      //@todo: get input data and put it in proper format so it is ordered properly                       //submit button has been pressed put values in database for new times
+$("#add-Train").on("click", function (e) {                                                     //submit button has been pressed put values in database for new times
     e.preventDefault();
 
     var trainName = $("#train-Name").val().trim();
     var trainDestination = $("#train-Destination").val().trim();
     var firstTrainTime = $("#first-Train-Time").val().trim();
     var trainFrequency = $("#train-Frequency").val().trim();
+    var properFormat = moment(firstTrainTime, 'HH:mm').isValid();                               // has proper format been used?
+    console.log(properFormat);
 
-    if (trainName != "" && trainDestination != "" && firstTrainTime != "" && trainFrequency != "") { //all fields must be entered before submission
+    if (trainName != "" && trainDestination != "" && firstTrainTime != "" && trainFrequency != "" && properFormat) { //all fields must be entered before submission
         db.ref().push({                                                                         // this creates new object rather then writting over like set does
             trainName: trainName,
             trainDestination: trainDestination,
             firstTrainTime: firstTrainTime,
             trainFrequency: trainFrequency
         });
+
+        $("#train-Name").val("");                                                             //clear all fields once input has been accepted
+        $("#train-Destination").val("");
+        $("#first-Train-Time").val("");
+        $("#train-Frequency").val("");
+    }
+
+    else {
+        alert("Please enter all data in proper format!");                                     //all fields have not been filled out, or proper format has not been followed
     }
 });
 
@@ -58,8 +69,3 @@ db.ref().orderByChild("trainDestination").on("child_added", function (snapshot) 
     newTr.append(newTdName).append(newTdDestination).append(newTdFrequency).append(newTdnextTime).append(newTdMinutesAway);
     $("#table").append(newTr);
 });
-
-
-// @tod0: moment('It is 2012-05-25', 'YYYY-MM-DD').isValid();       // true
-// @tod0: what if time is before first time:
-// @todo: change css a bit
